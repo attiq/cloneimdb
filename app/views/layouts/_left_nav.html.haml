@@ -2,7 +2,7 @@
 .list-group
   %a.list-group-item{:href => "/"} All
   - Category.all.each do |category|
-    %a.list-group-item.category{id: category.id, class: @movie && @movie.category.eql?(category) ? 'active' : '' }
+    %a.list-group-item.category{href: category.name, id: category.id, class: @movie && @movie.category.eql?(category) ? 'active' : '' }
       = category.name
 
 
