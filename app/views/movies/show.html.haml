@@ -1,0 +1,33 @@
+.col-lg-12
+  .card.mt-4
+    %img.card-img-top.img-fluid{alt: @movie.title, src: @movie.image_url(:large)}/
+    .card-body
+      %h3.card-title
+        = @movie.title
+      %p.card-text
+        = @movie.description
+      .row
+        .small-2.large-2.columns
+          = imdb_style_rating_for @movie, current_user
+        %br/
+        .small-2.large-4.columns
+          - if current_user
+            Ratings: #{rating_for @movie, "ratings"}
+
+
+  / /.card
+  .card.card-outline-secondary.my-4
+    .card-header
+      Movie Reviews
+    .card-body
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.
+      %small.text-muted Posted by Anonymous on 3/1/17
+      %hr/
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.
+      %small.text-muted Posted by Anonymous on 3/1/17
+      %hr/
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.
+      %small.text-muted Posted by Anonymous on 3/1/17
+      %hr/
+      %a.btn.btn-success{:href => "#"} Leave a Review
+     

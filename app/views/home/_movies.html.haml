@@ -1,0 +1,18 @@
+- @movies.each do |movie|
+  .col-lg-4.col-md-6.mb-4
+    .card.h-100
+      %a{:href => "#"}
+        %img.card-img-top{alt: movie.title, src: movie.image_url(:small)}/
+      .card-body
+        %h4.card-title
+          %a{:href => movie_path(movie)}
+            = movie.title
+        %p.card-text
+          = movie.description.truncate(50, omission: '...')
+      .card-footer
+        .small-2.large-2.columns
+          = imdb_style_rating_for movie, current_user
+        %br/
+        .small-2.large-4.columns
+          - if current_user
+            Ratings: #{rating_for movie, "ratings"}

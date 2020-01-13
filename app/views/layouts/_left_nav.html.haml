@@ -1,0 +1,27 @@
+%h1.my-4 Categories
+.list-group
+  %a.list-group-item{:href => "/"} All
+  - Category.all.each do |category|
+    %a.list-group-item.category{id: category.id, class: @movie && @movie.category.eql?(category) ? 'active' : '' }
+      = category.name
+
+
+:javascript
+  $(document).ready(function() {
+    $('.category').click(function(e) {
+
+      e.preventDefault();
+
+      $('.category').removeClass("active");
+      $(this).addClass("active");
+
+      $.ajax({
+        url: '/search?id='+ $(this).attr('id'),
+        type: 'get',
+        success: function (response) {
+          $('#movies').html( response.html);
+        }
+      })
+    })
+  })
+      

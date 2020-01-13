@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title ImdbClone
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'bootstrap.min.css', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application','data-turbolinks-track': true
+    = javascript_include_tag 'bootstrap.bundle.min.js','data-turbolinks-track': true
+  %body
+    / Navigation
+    = render partial: 'layouts/header'
+    / Page Content
+    .container
+      .row.mt-5.mb-5
+        .col-lg-12
+          = yield
+    / Footer
+    = render partial: 'layouts/footer'
+
