@@ -1,14 +1,15 @@
 #carouselExampleIndicators.carousel.slide.my-4{"data-ride" => "carousel"}
   %ol.carousel-indicators
     - @home_movies.each_with_index do |movie, n|
-      %li.if.n{:class => n == 0 ? 'active' : '', "data-slide-to" => n, "data-target" => "#carouselExampleIndicators"}
+      %li.active{class: n == 0 ? 'active' : '', "data-slide-to" => n, "data-target" => "#carouselExampleIndicators"}
+        
   .carousel-inner{:role => "listbox"}
     - if @home_movies.present?
-      .item.active
-        = image_tag @home_movies.first.image_url
+      .carousel-item.active
+        %img.d-block.img-fluid{alt: @home_movies.first.title, src: @home_movies.first.image_url(:medium)}
       - @home_movies.drop(1).each do |movie|
-        .item
-          = image_tag movie.image_url(:medium)
+        .carousel-item
+          %img.d-block.img-fluid{alt: movie.title, src: movie.image_url(:medium)}/
             
   %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleIndicators", :role => "button"}
     %span.carousel-control-prev-icon{"aria-hidden" => "true"}
