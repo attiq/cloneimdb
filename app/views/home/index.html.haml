@@ -1,20 +1,15 @@
 #carouselExampleIndicators.carousel.slide.my-4{"data-ride" => "carousel"}
   %ol.carousel-indicators
-    %li.active{"data-slide-to" => "0", "data-target" => "#carouselExampleIndicators"}
-    %li{"data-slide-to" => "1", "data-target" => "#carouselExampleIndicators"}
-    %li{"data-slide-to" => "2", "data-target" => "#carouselExampleIndicators"}
-
+    - @home_movies.each_with_index do |movie, n|
+      %li.if.n{:class => n == 0 ? 'active' : '', "data-slide-to" => n, "data-target" => "#carouselExampleIndicators"}
   .carousel-inner{:role => "listbox"}
     - if @home_movies.present?
-      .carousel-item.active
-        %img.d-block.img-fluid{alt: @home_movies[0].title, src: @home_movies[0].image_url(:medium)}
-      .carousel-item
-        - if @home_movies[1].present?
-          %img.d-block.img-fluid{alt: @home_movies[1].title, src: @home_movies[1].image_url(:medium)}/
-      .carousel-item
-        - if @home_movies[2].present?
-          %img.d-block.img-fluid{alt: @home_movies[2].title, src: @home_movies[2].image_url(:medium)}/
-
+      .item.active
+        = image_tag @home_movies.first.image_url
+      - @home_movies.drop(1).each do |movie|
+        .item
+          = image_tag movie.image_url(:medium)
+            
   %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleIndicators", :role => "button"}
     %span.carousel-control-prev-icon{"aria-hidden" => "true"}
     %span.sr-only Previous
@@ -26,5 +21,3 @@
   = render partial: "movies"
 .row.mb-5#paginator
   = paginate @movies, :remote => true
-
-

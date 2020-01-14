@@ -313,7 +313,6 @@ DEPENDENCIES
   haml-rails (~> 2.0)
   image_processing (~> 1.8)
   jbuilder (~> 2.7)
-  jquery-rails
   kaminari
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
