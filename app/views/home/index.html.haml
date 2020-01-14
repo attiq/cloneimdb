@@ -1,7 +1,7 @@
 #carouselExampleIndicators.carousel.slide.my-4{"data-ride" => "carousel"}
   %ol.carousel-indicators
     - @home_movies.each_with_index do |movie, n|
-      %li.active{class: n == 0 ? 'active' : '', "data-slide-to" => n, "data-target" => "#carouselExampleIndicators"}
+      %li{class: n == 0 ? 'active' : '', "data-slide-to" => n, "data-target" => "#carouselExampleIndicators"}
         
   .carousel-inner{:role => "listbox"}
     - if @home_movies.present?
