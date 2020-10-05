@@ -33,7 +33,7 @@ gem 'devise'
 gem 'activeadmin'
 
 # Use Shrine to upload files
-gem "shrine", "~> 3.0"
+gem "shrine", "~> 3.3"
 gem "image_processing", "~> 1.8"
 gem "aws-sdk-s3", "~> 1.14"         # for AWS S3 storage
 gem 'ratyrate'
